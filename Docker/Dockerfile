@@ -1,6 +1,8 @@
 FROM jenkins/jenkins:lts
-# if we want to install via apt
 USER root
-RUN apt-get update && apt-get install -y ruby
-# drop back to the regular jenkins user - good practice
+RUN apt-get update \
+&& apt-get install -y ruby \
+&& apt-get -y install openssh-server \
+&& apt-get -y install vim \
+&& apt-get -y install net-tools 
 USER jenkins
